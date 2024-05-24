@@ -88,6 +88,7 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 ### Composer template
+composer.lock
 composer.phar
 /vendor/
 
