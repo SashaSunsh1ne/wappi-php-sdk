@@ -48,26 +48,12 @@ use Swagger\Client\ObjectSerializer;
  */
 class ContactsApi
 {
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
+    protected ClientInterface $client;
 
-    /**
-     * @var Configuration
-     */
-    protected $config;
+    protected Configuration $config;
 
-    /**
-     * @var HeaderSelector
-     */
-    protected $headerSelector;
+    protected HeaderSelector $headerSelector;
 
-    /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     */
     public function __construct(
         ClientInterface $client = null,
         Configuration $config = null,
@@ -78,10 +64,7 @@ class ContactsApi
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
+    public function getConfig(): Configuration
     {
         return $this->config;
     }
@@ -98,7 +81,7 @@ class ContactsApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\InlineResponse2002
      */
-    public function apiSyncContactBlockPost($profile_id, $contact)
+    public function apiSyncContactBlockPost(string $profile_id, string $contact): \Swagger\Client\Model\InlineResponse2002
     {
         list($response) = $this->apiSyncContactBlockPostWithHttpInfo($profile_id, $contact);
         return $response;
@@ -116,7 +99,7 @@ class ContactsApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
      */
-    public function apiSyncContactBlockPostWithHttpInfo($profile_id, $contact)
+    public function apiSyncContactBlockPostWithHttpInfo(string $profile_id, string $contact): array
     {
         $returnType = '\Swagger\Client\Model\InlineResponse2002';
         $request = $this->apiSyncContactBlockPostRequest($profile_id, $contact);
@@ -193,13 +176,13 @@ class ContactsApi
      *
      * Заблокировать контакт
      *
-     * @param  string $profile_id Profile ID (required)
-     * @param  string $contact Контакт. Для ввода доступны форматы:   ID контакта.*Пример: * ** 13475634251 @c.us ** ;   Номер телефона.*Пример: * ** 79002224477 ** .Номер должен начинаться с кода страны. Для России и Казахстана это всегда 7, затем 10 цифр.Сообщения на номера телефона с 8 не будут доставлены. (required)
+     * @param string $profile_id Profile ID (required)
+     * @param string $contact Контакт. Для ввода доступны форматы:   ID контакта.*Пример: * ** 13475634251 @c.us ** ;   Номер телефона.*Пример: * ** 79002224477 ** .Номер должен начинаться с кода страны. Для России и Казахстана это всегда 7, затем 10 цифр.Сообщения на номера телефона с 8 не будут доставлены. (required)
      *
-     * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *@throws \InvalidArgumentException
      */
-    public function apiSyncContactBlockPostAsync($profile_id, $contact)
+    public function apiSyncContactBlockPostAsync(string $profile_id, string $contact): \GuzzleHttp\Promise\PromiseInterface
     {
         return $this->apiSyncContactBlockPostAsyncWithHttpInfo($profile_id, $contact)
             ->then(
@@ -214,13 +197,13 @@ class ContactsApi
      *
      * Заблокировать контакт
      *
-     * @param  string $profile_id Profile ID (required)
-     * @param  string $contact Контакт. Для ввода доступны форматы:   ID контакта.*Пример: * ** 13475634251 @c.us ** ;   Номер телефона.*Пример: * ** 79002224477 ** .Номер должен начинаться с кода страны. Для России и Казахстана это всегда 7, затем 10 цифр.Сообщения на номера телефона с 8 не будут доставлены. (required)
+     * @param string $profile_id Profile ID (required)
+     * @param string $contact Контакт. Для ввода доступны форматы:   ID контакта.*Пример: * ** 13475634251 @c.us ** ;   Номер телефона.*Пример: * ** 79002224477 ** .Номер должен начинаться с кода страны. Для России и Казахстана это всегда 7, затем 10 цифр.Сообщения на номера телефона с 8 не будут доставлены. (required)
      *
-     * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     *@throws \InvalidArgumentException
      */
-    public function apiSyncContactBlockPostAsyncWithHttpInfo($profile_id, $contact)
+    public function apiSyncContactBlockPostAsyncWithHttpInfo(string $profile_id, string $contact): \GuzzleHttp\Promise\PromiseInterface
     {
         $returnType = '\Swagger\Client\Model\InlineResponse2002';
         $request = $this->apiSyncContactBlockPostRequest($profile_id, $contact);
@@ -265,13 +248,13 @@ class ContactsApi
     /**
      * Create request for operation 'apiSyncContactBlockPost'
      *
-     * @param  string $profile_id Profile ID (required)
-     * @param  string $contact Контакт. Для ввода доступны форматы:   ID контакта.*Пример: * ** 13475634251 @c.us ** ;   Номер телефона.*Пример: * ** 79002224477 ** .Номер должен начинаться с кода страны. Для России и Казахстана это всегда 7, затем 10 цифр.Сообщения на номера телефона с 8 не будут доставлены. (required)
+     * @param string $profile_id Profile ID (required)
+     * @param string $contact Контакт. Для ввода доступны форматы:   ID контакта.*Пример: * ** 13475634251 @c.us ** ;   Номер телефона.*Пример: * ** 79002224477 ** .Номер должен начинаться с кода страны. Для России и Казахстана это всегда 7, затем 10 цифр.Сообщения на номера телефона с 8 не будут доставлены. (required)
      *
-     * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     *@throws \InvalidArgumentException
      */
-    protected function apiSyncContactBlockPostRequest($profile_id, $contact)
+    protected function apiSyncContactBlockPostRequest(string $profile_id, string $contact): Request
     {
         // verify the required parameter 'profile_id' is set
         if ($profile_id === null || (is_array($profile_id) && count($profile_id) === 0)) {
